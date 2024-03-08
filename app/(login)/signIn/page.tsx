@@ -1,8 +1,10 @@
 import React from 'react'
+import Login from "../signIn/login"
+
 const page = () => {
   return (
-    <div className='w-full'>
-
+    <div>
+        <Login/>
     </div>
   )
 }
