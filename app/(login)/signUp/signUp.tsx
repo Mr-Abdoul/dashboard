@@ -25,8 +25,6 @@ const signUp = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    console.log("Hehe")
-
     await fetch("http://localhost:4000/api/auth/signup", {
       method: "POST",
       headers: {
@@ -36,15 +34,16 @@ const signUp = () => {
         password: formData.password,
         email: formData.email,
       }),
-    }).then(async(res) => {
-      const data = await res.json();
-      console.log("Inscription réussie!", data);
-    }).catch(err => {
-      console.log("Erreur survenue !");
-      setErrors(err);
-    });
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        console.log("Inscription réussie!", data);
+      })
+      .catch((err) => {
+        console.log("Erreur survenue !");
+        setErrors(err);
+      });
   };
-  
 
   // Utilisez signIn avec le fournisseur d'inscription après l'inscription réussie
   // const result =  signIn('credentials', {
@@ -53,15 +52,13 @@ const signUp = () => {
   //   password: formData.password,
   // });
 
-  
-
   return (
     <div
       className="h-screen flex flex-col  
       items-center justify-center "
     >
       <h1 className="text-2xl font-bold my-4">Inscription</h1>
-      <form  className="flex flex-col w-1/3" onSubmit={handleSubmit}>
+      <form className="flex flex-col w-1/3" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -101,7 +98,11 @@ const signUp = () => {
           <p className="text-red-500">{errors.confirmPassword}</p>
         )}
 
-        <input type="submit" /* onClick={(e) => {e.preventDefault(); console.log("hehe")}} */ className="bg-blue-500 text-white p-2 rounded-md" value={"Soumettre"}/>
+        <input
+          type="submit"
+          /* onClick={(e) => {e.preventDefault(); console.log("hehe")}} */ className="bg-blue-500 text-white p-2 rounded-md"
+          value={"Soumettre"}
+        />
       </form>
     </div>
   );

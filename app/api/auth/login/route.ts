@@ -3,7 +3,7 @@ import bcrypt from "bcrypt"
 import NextAuth from 'next-auth/next';
 import { Provider } from 'next-auth/providers/index';
  
-export default async function handler(
+export  async function POST(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -11,7 +11,7 @@ export default async function handler(
   
   const { email, password } = req.body
 
-  fetch("http://localhost:4000//api/auth/signup", {
+  fetch("http://localhost:4000/api/auth/login", {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
@@ -23,10 +23,6 @@ export default async function handler(
       throw new Error(`Erreur du HTTP! Statut: ${res.status}`);
     }
     return res.json(); 
-   })
-   .then(data =>{
-      //ici je traite les données renvoyées par le backend
-    console.log('Réponse du backend:', data);
    })
    .catch(error => {
     // ici je gérez les erreurs de la requête

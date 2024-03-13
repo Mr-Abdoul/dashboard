@@ -1,14 +1,17 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useParams, useRouter } from 'next/navigation';
 
 const Edit = () => {
+  const params = useParams()
+  console.log({params});
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = params;
 
   const [task, setTask] = useState({
-    title: "",
+    name: "",
     description: "",
   });
 
@@ -16,20 +19,20 @@ const Edit = () => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    const fetchTask = async () => {
-      const response = await fetch("/api/tasks");
-      const data = await response.json();
-      setTask(data);
-    };
+  // useEffect(() => {
+  //   const fetchTask = async () => {
+  //     const response = await fetch("/api/tache/edit:id");
+  //     const data = await response.json();
+  //     setTask(data);
+  //   };
 
-    if (id) {
-      fetchTask();
-    }
-  }, [id]);
+  //   if (id) {
+  //     fetchTask();
+  //   }
+  // }, [id]);
 
   const handleUpdate = async () => {
-    const response = await fetch("/api/tasks", {
+    const response = await fetch(`http://localhost:4000/api/tache/edite/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +42,7 @@ const Edit = () => {
 
     if (response.ok) {
       // Task update successfully
-      router.push("/");
+      router.push("/dashboard");
     } else {
       // Handle error
       alert("Failed to edit task");
@@ -48,18 +51,18 @@ const Edit = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-8 max-w-[560px]">
+      <div className="container mx-auto mt-8 max-w-[560px] ">
         <div className="flex justify-between items-center pb-4 border-b border-dashed border-gray-900 mb-4">
           <h1 className="text-3xl font-semibold">Edit Task</h1>
         </div>
         <form>
           <div className="mb-4">
-            <label>Title</label>
+            <label>Name</label>
             <input
               className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="text"
-              name="title"
-              value={task?.title}
+              name="name"
+              value={task?.name}
               onChange={onChange}
             />
           </div>

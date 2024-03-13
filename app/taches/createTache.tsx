@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent } from "react";
 
-const Create = () => {
+const CreateTache = () => {
   const router = useRouter();
   const [task, setTask] = useState({
-    Nom: "",
+    name: "",
     description: "",
-    image: "",
+    // image: "",
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +17,6 @@ const Create = () => {
   };
 
   const handleCreate = async () => {
-    console.log(task);
-    
     const response = await fetch("http://localhost:4000/api/create-task", {
       method: "POST",
       headers: {
@@ -29,28 +27,27 @@ const Create = () => {
 
     if (response.ok) {
       // Project created successfully
-      router.push("/");
+      router.push("/dashboard");
     } else {
       // Handle error
-      alert("Failed to create project");
     }
   };
-const handleSubmit =(e:any)=> {
- e.preventDefault()
-}
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
   return (
     <>
       <div className="container mx-auto mt-8 max-w-[560px]">
         <div className="flex justify-between items-center pb-4 border-b border-dashed border-gray-900 mb-4">
           <h1 className="text-3xl font-semibold">Create Project</h1>
         </div>
-        <form onSubmit={(e)=>handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="mb-4">
             <label>Nom</label>
             <input
               className=" text-black mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="text"
-              name="title"
+              name="name"
               // value={task?.Nom}
               onChange={onChange}
             />
@@ -93,4 +90,4 @@ const handleSubmit =(e:any)=> {
   );
 };
 
-export default Create;
+export default CreateTache;

@@ -1,38 +1,43 @@
+"use client"
 
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter} from "next/router";
+import { useRouter, useParams } from "next/navigation"; 
 import { useEffect, useState } from "react";
 
 const Delete = () => {
+  const params = useParams()
+  console.log({params});
+  
   const router = useRouter();
-  const { id } = router.query;
+  const { id } = params;
 
   const [task, setTask] = useState({
-    title: "",
+    name: "",
     description: "",
   });
 
-  useEffect(() => {
-    const fetchTask = async () => {
-      const response = await fetch("/api/tasks");
-      const data = await response.json();
-      setTask(data);
-    };
+  // useEffect(() => {
+  //   const fetchTask = async () => {
+  //     const response = await fetch("/api/tache/delete:id");
+  //     const data = await response.json();
+  //     setTask(data);
+  //   };
 
-    if (id) {
-      fetchTask();
-    }
-  }, [id]);
+  //   if (id) {
+  //     fetchTask();
+  //   }
+  // }, [id]);
 
   const handleUpdate = async () => {
-    const response = await fetch("/api/tasks", {
+    const response = await fetch(`http://localhost:4000/api/tache/delete/${id}`, {
       method: "DELETE"
     });
 
     if (response.ok) {
       // Task deleted successfully
-      router.push("/");
+      router.push("/dashboard");
     } else {
       // Handle error
       alert("Failed to delete task");
@@ -47,11 +52,11 @@ const Delete = () => {
         </div>
         <form>
           <div className="my-12">
-            Are you sure to delete <strong>{task?.title}</strong>?
+            Are you sure to delete <strong>{task?.name}</strong>?
           </div>
           <div className="flex w-full gap-2">
             <Link
-              href="/"
+              href="/dashboard"
               className="text-center bg-gray-300 hover:bg-opacity-80 text-black rounded-lg px-4 py-2 duration-200 w-full"
             >
               Cancel

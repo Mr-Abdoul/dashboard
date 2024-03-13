@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from "bcrypt";
 import mongoose, { Schema } from 'mongoose';
 
-export default async function handler(
+export default async function POST(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

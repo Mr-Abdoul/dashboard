@@ -1,12 +1,11 @@
 import React from 'react'
-import Create from './create/createTache'
-import Tache from './lesTache/tache'
+import CreateTache from './createTache'
+import LesTache from './listeTaches'
 
 const page = () => {
   return (
     <div>
-       <Create />
-       <Tache />
+       <CreateTache />
     </div>
   )
 }

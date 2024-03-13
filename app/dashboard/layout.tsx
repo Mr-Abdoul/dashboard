@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <Header />
       <div className="flex">
-        <div className="w-1/5">
+        <div className="">
         <Sidebar />
         </div>
         <div className="w-4/5 justify-start">
