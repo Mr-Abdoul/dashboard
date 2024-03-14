@@ -4,11 +4,11 @@ import NextAuth from 'next-auth/next';
 import { Provider } from 'next-auth/providers/index';
 import { NextRequest } from 'next/server';
  
-export  async function POST(
+const POST = async (
   // req: NextApiRequest,
   req: NextRequest | Request,
   res: NextApiResponse
-) {
+) => {
   console.log(req);
   
   const { email, password } = req.body
@@ -32,6 +32,8 @@ export  async function POST(
   });
 
 
+
+
   // try {
   //   // await login('credentials', { email, password })
   //   res.status(200).json({ success: true })
@@ -44,3 +46,4 @@ export  async function POST(
   // }
 }
 
+export default POST;
