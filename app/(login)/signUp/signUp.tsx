@@ -1,8 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-/* import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react"; */
+// import { useRouter } from "next/navigation";
+import router from "next/router";
+// import { signIn } from "next-auth/react"; 
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ const SignUp = () => {
       .then(async (res) => {
         const data = await res.json();
         console.log("Inscription réussie!", data);
+        router.push('/dashboard')
       })
       .catch((err) => {
         console.log("Erreur survenue !");
