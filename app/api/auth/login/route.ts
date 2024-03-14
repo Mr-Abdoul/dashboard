@@ -5,7 +5,8 @@ import { Provider } from 'next-auth/providers/index';
 import { NextRequest } from 'next/server';
  
 export  async function POST(
-  req: NextApiRequest | NextRequest | Request,
+  // req: NextApiRequest,
+  req: NextRequest | Request,
   res: NextApiResponse
 ) {
   console.log(req);
