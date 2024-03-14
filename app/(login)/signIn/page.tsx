@@ -2,8 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const page = () => {
+const Page = () => {
 
   // const router = useRouter()
   const router = useRouter();
@@ -93,18 +94,11 @@ const page = () => {
           >
             Login
           </button>
-          <span
-            className="text-blue-500 cursor-pointer"
-            onClick={() => router.push("/signUp")}
-          >
-            Tu es nouveau?
-            <link rel="stylesheet" href="/dashboard" />
-            Sign In
-          </span>
+          <Link href="/signUp">Tu es nouveau? | Sign In</Link>
         </div>
       </form>
     </div>
   )
 }
 
-export default page
+export default Page
