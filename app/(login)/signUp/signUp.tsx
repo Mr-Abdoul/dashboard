@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 /* import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react"; */
 
-const signUp = () => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -108,4 +108,4 @@ const signUp = () => {
   );
 };
 
-export default signUp;
+export default SignUp;

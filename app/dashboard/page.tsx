@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Login from "../(login)/signIn/login";
+import Login from "../(login)/signIn/Login";
 import Header from "./header";
 import Footer from "./footer";
 import Sidebar from "./sidebar";

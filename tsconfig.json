@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(login)/signIn/login.tsx", "app/taches/listeTaches.tsx", "app/api/route.ts", "app/api/auth/login/route.ts", "app/taches/createTache.tsx", "app/taches/delete/[id]"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(login)/signIn/Login.tsx", "app/taches/listeTaches.tsx", "app/api/route.ts", "app/api/auth/login/route.ts", "app/taches/createTache.tsx", "app/taches/delete/[id]"],
   "exclude": ["node_modules"]
 }

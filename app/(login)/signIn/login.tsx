@@ -2,9 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 
-function login() {
+const Login = () => {
   // const router = useRouter()
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -105,4 +104,4 @@ function login() {
     </div>
   );
 }
-export default login;
+export default Login;
