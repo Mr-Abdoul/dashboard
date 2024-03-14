@@ -4,7 +4,7 @@ import NextAuth from 'next-auth/next';
 import { Provider } from 'next-auth/providers/index';
 import { NextRequest } from 'next/server';
  
-export default async function POST (
+export default async function handler (
   // req: NextApiRequest,
   req: NextRequest | Request,
   res: NextApiResponse
@@ -34,16 +34,4 @@ export default async function POST (
     res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-
-
-  // try {
-  //   // await login('credentials', { email, password })
-  //   res.status(200).json({ success: true })
-  // } catch (error: any) {
-  //   if (error.type === 'CredentialsSignin') {
-  //     res.status(401).json({ error: 'Invalid credentials.' })
-  //   } else {
-  //     res.status(500).json({ error: 'Something went wrong.' })
-  //   }
-  // }
 }
