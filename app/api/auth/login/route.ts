@@ -2,9 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from "bcrypt"
 import NextAuth from 'next-auth/next';
 import { Provider } from 'next-auth/providers/index';
+import { NextRequest } from 'next/server';
  
 export  async function POST(
-  req: NextApiRequest,
+  req: NextApiRequest | NextRequest | Request,
   res: NextApiResponse
 ) {
   console.log(req);
