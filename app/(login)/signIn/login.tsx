@@ -91,14 +91,14 @@ const Login = () => {
           >
             Login
           </button>
-          <span
+          {/* <span
             className="text-blue-500 cursor-pointer"
             onClick={() => router.push("/signUp")}
           >
             Tu es nouveau?
             <link rel="stylesheet" href="/dashboard" />
             Sign In
-          </span>
+          </span> */}
         </div>
       </form>
     </div>
