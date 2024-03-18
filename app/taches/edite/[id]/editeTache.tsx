@@ -32,7 +32,7 @@ const Edit = () => {
   // }, [id]);
 
   const handleUpdate = async () => {
-    const response = await fetch(`http://localhost:4000/api/tache/edite/${id}`, {
+    const response = await fetch(`https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/tache/edite/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

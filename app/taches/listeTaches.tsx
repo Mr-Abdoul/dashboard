@@ -9,7 +9,7 @@ const LesTache = () => {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch("http://localhost:4000/api/send/getTache");
+      const response = await fetch("https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/send/getTache");
       const data = await response.json();
       setTasks(data);
     };

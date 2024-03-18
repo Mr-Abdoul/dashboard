@@ -26,7 +26,7 @@ const SignUp = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    await fetch("http://localhost:4000/api/auth/signup", {
+    await fetch("https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
