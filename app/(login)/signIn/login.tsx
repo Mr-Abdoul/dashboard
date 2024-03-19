@@ -19,7 +19,7 @@ const Login = () => {
     const password = formData.get("password");
 
     fetch(
-      "https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/login",
+      "https://portfolio-back-end-beta.vercel.app/api/auth/login",
       {
         method: "POST",
         headers: {
