@@ -18,25 +18,16 @@ const Login = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // const response = await fetch("http://localhost:4000/api/auth/login", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ email, password }),
-    // });
-
-    // if (response.ok) {
-    //   router.push("/dashboard");
-    // } else {
-    //   console.log("désoler cet utilisateur n\'existe pas veillez vous inscrire");
-    // }
-
-     fetch("https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
+    fetch(
+      "https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           router.push("/dashboard");
@@ -91,17 +82,9 @@ const Login = () => {
           >
             Login
           </button>
-          {/* <span
-            className="text-blue-500 cursor-pointer"
-            onClick={() => router.push("/signUp")}
-          >
-            Tu es nouveau?
-            <link rel="stylesheet" href="/dashboard" />
-            Sign In
-          </span> */}
         </div>
       </form>
     </div>
   );
-}
+};
 export default Login;

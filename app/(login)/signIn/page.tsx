@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const Page = () => {
-
   // const router = useRouter()
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
   // console.log({ useRouter });
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,25 +21,17 @@ const Page = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    // const response = await fetch("http://localhost:4000/api/auth/login", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ email, password }),
-    // });
-
-    // if (response.ok) {
-    //   router.push("/dashboard");
-    // } else {
-    //   console.log("désoler cet utilisateur n\'existe pas veillez vous inscrire");
-    // }
-
-     fetch("https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
+    fetch(
+      "https://portfolio-back-d9g0cn1az-le-ministres-projects.vercel.app/api/auth/login",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           router.push("/dashboard");
@@ -51,9 +44,9 @@ const Page = () => {
           "Erreur lors de la requête: cet utilisateur n'existe pas",
           error
         );
+        setErrorMessage("La connexion a échoué. Veuillez réessayer.");
       });
   };
-
 
   return (
     <div
@@ -95,10 +88,12 @@ const Page = () => {
             Login
           </button>
           <Link href="/signUp">Tu es nouveau? | Sign In</Link>
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}{" "}
+          {/* Afficher le message d'erreur s'il est défini */}
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
