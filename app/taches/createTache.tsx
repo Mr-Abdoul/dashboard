@@ -7,12 +7,12 @@ import { useState, ChangeEvent } from "react";
 export interface TaskModel {
   name: string,
   description: string,
-  img: string | ArrayBuffer | null | undefined | number | object
+  image: string | ArrayBuffer | null | undefined | number | object
 }
 
 const CreateTache = () => {
   const router = useRouter();
-  const [task, setTask] = useState({
+  const [task, setTask] = useState<TaskModel>({
     name: "",
     description: "",
     image: '',
@@ -96,7 +96,7 @@ const CreateTache = () => {
               id="image"
               // value={task?.image}
               // onChange={onChange}
-              onChange={(e) => {
+              onChange={(e: any) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(e.target.files[0]);
                 reader.onloadend = () => {
