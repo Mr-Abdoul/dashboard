@@ -13,6 +13,7 @@ const Edit = () => {
   const [task, setTask] = useState({
     name: "",
     description: "",
+    img: {}
   });
 
   const onChange = (e:any) => {
@@ -76,6 +77,18 @@ const Edit = () => {
               onChange={onChange}
             />
           </div>
+          { <div className="mb-4">
+            <label>image</label>
+            <input
+            className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
+              type="file"
+              name="img"
+              id="image"
+              // value={task?.image}
+              onChange={onChange}
+              accept="image/png,image/gif,image/jpg,image/jpeg"
+            />           
+          </div> }
           <button
             className="bg-green-600 hover:bg-opacity-80 text-white rounded-lg px-4 py-2 duration-200 w-full"
             type="button"

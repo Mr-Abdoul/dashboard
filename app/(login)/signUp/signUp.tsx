@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 // import { useRouter } from "next/navigation";
 import router from "next/router";
+import axios from "axios";
 // import { signIn } from "next-auth/react"; 
 
 const SignUp = () => {
@@ -45,6 +46,8 @@ const SignUp = () => {
         console.log("Erreur survenue !");
         setErrors(err);
       });
+
+      
   };
 
   // Utilisez signIn avec le fournisseur d'inscription après l'inscription réussie

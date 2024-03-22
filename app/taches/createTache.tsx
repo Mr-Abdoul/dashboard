@@ -4,20 +4,37 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useState, ChangeEvent } from "react";
 
+export interface TaskModel {
+  name: string,
+  description: string,
+  img: string | ArrayBuffer | null | undefined | number | object
+}
+
 const CreateTache = () => {
   const router = useRouter();
   const [task, setTask] = useState({
     name: "",
     description: "",
-    // image: "",
+    image: '',
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
+    // setTask({ ...task, [e.target.name]: e.target.value });
+    // console.log(task.img);
   };
 
+  // const readreImage = (file: any) => {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     console.log(reader.result)
+  //   }
+  // }
+
   const handleCreate = async () => {
-    const response = await fetch("https://portfolio-back-end-beta.vercel.app/api/create-task", {
+    // console.log(task);
+    
+    const response = await fetch("http://localhost:4000/api/create-task", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +66,11 @@ const CreateTache = () => {
               type="text"
               name="name"
               // value={task?.Nom}
-              onChange={onChange}
+              // onChange={onChange}
+              onChange={(e) => {
+                const inputValue = e.target.value
+                setTask({ ...task, name: inputValue})
+              }}
             />
           </div>
           <div className="mb-4">
@@ -59,21 +80,32 @@ const CreateTache = () => {
               type="text"
               name="description"
               // value={task?.description}
-              onChange={onChange}
+              // onChange={onChange}
+              onChange={(e) => {
+                const inputValue = e.target.value
+                setTask({ ...task, description: inputValue})
+              }}
             />
           </div>
-          {/* <div className="mb-4">
+          { <div className="mb-4">
             <label>image</label>
             <input
             className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="file"
               name="image"
               id="image"
-              value={task?.image}
-              onChange={onChange}
+              // value={task?.image}
+              // onChange={onChange}
+              onChange={(e) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onloadend = () => {
+                  setTask({...task, image: reader.result})
+                }
+              }}
               accept="image/png,image/gif,image/jpg,image/jpeg"
             />           
-          </div> */}
+          </div> }
           <button
             className="bg-green-600 hover:bg-opacity-80 text-white rounded-lg px-4 py-2 duration-200 w-full"
             type="submit"
