@@ -13,24 +13,13 @@ const Edit = () => {
   const [task, setTask] = useState({
     name: "",
     description: "",
-    img: {}
+    img: ""
   });
 
   const onChange = (e:any) => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
 
-  // useEffect(() => {
-  //   const fetchTask = async () => {
-  //     const response = await fetch("/api/tache/edit:id");
-  //     const data = await response.json();
-  //     setTask(data);
-  //   };
-
-  //   if (id) {
-  //     fetchTask();
-  //   }
-  // }, [id]);
 
   const handleUpdate = async () => {
     const response = await fetch(`https://portfolio-back-end-beta.vercel.app/api/tache/edite/${id}`, {
