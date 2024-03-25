@@ -4,20 +4,35 @@ import React, { useEffect, useState } from 'react'
 import Head from "next/head";
 import { useParams, useRouter } from 'next/navigation';
 
-const Edit = () => {
+const Edit = (task: any) => {
   const params = useParams()
   console.log({params});
   const router = useRouter();
   const { id } = params;
 
-  const [task, setTask] = useState({
-    name: "",
-    description: "",
-    img: ""
+  const [data, setData] = useState({
+    name: task.name,
+    description: task.description,
+    image: ""
   });
 
-  const onChange = (e:any) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
+  // const onChange = (e:any) => {
+  //   setData({ ...task, [e.target.name]: e.target.value });
+  // };
+  const onChange = (e: any) => {
+    const { name, value } = e.target;
+    setData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleImageChange = (e: any) => {
+    const selectedImage = e.target.files[0];
+    setData(prevState => ({
+      ...prevState,
+      image: selectedImage
+    }));
   };
 
 
@@ -35,7 +50,7 @@ const Edit = () => {
       router.push("/dashboard");
     } else {
       // Handle error
-      alert("Failed to edit task");
+      alert("error to edit task");
     }
   };
 
@@ -52,7 +67,7 @@ const Edit = () => {
               className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="text"
               name="name"
-              value={task?.name}
+              value={data?.name}
               onChange={onChange}
             />
           </div>
@@ -62,7 +77,7 @@ const Edit = () => {
               className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="text"
               name="description"
-              value={task?.description}
+              value={data?.description}
               onChange={onChange}
             />
           </div>
@@ -71,10 +86,10 @@ const Edit = () => {
             <input
             className="mt-1 px-4 py-2 border border-gray-300 rounded-md block w-full"
               type="file"
-              name="img"
+              name="image"
               id="image"
-              // value={task?.image}
-              onChange={onChange}
+              // value={data?.image}
+              onChange={handleImageChange}
               accept="image/png,image/gif,image/jpg,image/jpeg"
             />           
           </div> }
