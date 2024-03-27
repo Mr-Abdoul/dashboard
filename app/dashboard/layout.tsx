@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./header";
-import Footer from "./footer";
+// import Footer from "./footer";
 import Sidebar from "./sidebar";
 
 
@@ -30,7 +30,7 @@ export default function RootLayout({
             {children}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       </body>
       </html>
   );

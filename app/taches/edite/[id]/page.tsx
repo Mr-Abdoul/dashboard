@@ -1,8 +1,12 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import Edit from './editeTache'
 
 const Page = () => {
-  return <Edit />
+  
+
+  return <Edit  />
 }
 
 export default Page
