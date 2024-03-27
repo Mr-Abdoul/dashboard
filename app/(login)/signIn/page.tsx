@@ -25,7 +25,7 @@ const Page = () => {
       `${process.env.URL_BACKEND}/api/auth/login`,
       {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
