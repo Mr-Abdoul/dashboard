@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 
 const LesTache = () => {
   const [tasks, setTasks] = useState([]);
-
+  
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch("https://portfolio-back-end-beta.vercel.app/api/send/getTache");
+      const response = await fetch(`${process.env.URL_BACKEND}/api/send/getTache`);
       const data = await response.json();
       setTasks(data);
     };

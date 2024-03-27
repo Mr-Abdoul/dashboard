@@ -26,8 +26,8 @@ const SignUp = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    await fetch("https://portfolio-back-end-beta.vercel.app/api/auth/signup", {
+    
+    await fetch(`${process.env.URL_BACKEND}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

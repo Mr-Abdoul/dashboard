@@ -67,7 +67,7 @@ const Edit = (task: any) => {
   const handleUpdate = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/tache/edite/${id}`,
+        `${process.env.URL_BACKEND}/api/tache/edite/${id}`,
         {
           method: "PATCH",
           headers: {
