@@ -21,8 +21,10 @@ const Page = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
+    console.log(process.env.URL_BACKEND);
+    
     fetch( 
-      `${process.env.URL_BACKEND}/api/auth/login`,
+      `https://portfolio-back-end-beta.vercel.app/api/auth/login`,
       {
         method: "POST",
         // credentials: "include",
