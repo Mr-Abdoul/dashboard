@@ -22,18 +22,15 @@ const Page = () => {
     const password = formData.get("password");
 
     console.log(process.env.URL_BACKEND);
-    
-    fetch( 
-      `${process.env.URL_BACKEND}/api/auth/login`,
-      {
-        method: "POST",
-        // credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      }
-    )
+
+    fetch(`${process.env.URL_BACKEND}/api/auth/login`, {
+      method: "POST",
+      // credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
       .then((res) => {
         if (res.ok) {
           router.push("/dashboard");
@@ -42,10 +39,7 @@ const Page = () => {
       })
       .catch((error) => {
         // ici je gérez les erreurs de la requête
-        console.error(
-          "Erreur lors de la requête: cet utilisateur n'existe pas",
-          error
-        );
+        console.error(error);
         setErrorMessage("La connexion a échoué. Veuillez réessayer.");
       });
   };
