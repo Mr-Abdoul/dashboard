@@ -24,7 +24,7 @@ const Page = () => {
     console.log(process.env.URL_BACKEND);
     
     fetch( 
-      `https://portfolio-back-end-beta.vercel.app/api/auth/login`,
+      `${process.env.URL_BACKEND}/api/auth/login`,
       {
         method: "POST",
         // credentials: "include",
