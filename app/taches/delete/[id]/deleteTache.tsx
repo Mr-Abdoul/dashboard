@@ -31,7 +31,7 @@ const Delete = () => {
   // }, [id]);
 
   const handleUpdate = async () => {
-    const response = await fetch(`${process.env.URL_BACKEND}/api/tache/delete/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/tache/delete/${id}`, {
       method: "DELETE"
     });
 

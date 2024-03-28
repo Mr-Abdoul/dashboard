@@ -9,7 +9,7 @@ const LesTache = () => {
   
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch(`${process.env.URL_BACKEND}/api/send/getTache`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/send/getTache`);
       const data = await response.json();
       setTasks(data);
     };

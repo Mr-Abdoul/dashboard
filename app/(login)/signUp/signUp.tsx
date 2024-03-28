@@ -27,7 +27,7 @@ const SignUp = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
-    await fetch(`${process.env.URL_BACKEND}/api/auth/signup`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -21,9 +21,9 @@ const Page = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    console.log(process.env.URL_BACKEND);
+    console.log({env:process.env.NEXT_PUBLIC_URL_BACKEND});
 
-    fetch(`${process.env.URL_BACKEND}/api/auth/login`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/auth/login`, {
       method: "POST",
       // credentials: "include",
       headers: {

@@ -22,7 +22,7 @@ const Edit = (task: any) => {
     const updateData = async () => {
       try {
         const res = await fetch(
-          `http://localhost:4000/api/send/getTache/${id}`,
+          `${process.env.NEXT_PUBLIC_URL_BACKEND}/send/getTache/${id}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Edit = (task: any) => {
   const handleUpdate = async () => {
     try {
       const response = await fetch(
-        `${process.env.URL_BACKEND}/api/tache/edite/${id}`,
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/api/tache/edite/${id}`,
         {
           method: "PATCH",
           headers: {

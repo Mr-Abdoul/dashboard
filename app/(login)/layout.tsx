@@ -11,6 +11,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  console.log({env:process.env.URL_BACKEND});
   return (
     <html lang="en">
       <body>

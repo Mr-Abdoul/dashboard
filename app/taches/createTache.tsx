@@ -34,7 +34,7 @@ const CreateTache = () => {
   const handleCreate = async () => {
     // console.log(task);
     
-    const response = await fetch(`${process.env.URL_BACKEND}/api/create-task`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/create-task`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
