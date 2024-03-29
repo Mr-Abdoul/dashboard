@@ -18,6 +18,7 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
   // function handleSubmit(_event: FormEvent<HTMLFormElement>): void {
   //   _event.preventDefault();
   //   console.log("hehe")
@@ -45,6 +46,7 @@ const SignUp = () => {
       .catch((err) => {
         console.log("Erreur survenue !");
         setErrors(err);
+        setErrorMessage("La connexion a échoué. Veuillez réessayer.");
       });
 
       
@@ -108,6 +110,7 @@ const SignUp = () => {
           /* onClick={(e) => {e.preventDefault(); console.log("hehe")}} */ className="bg-blue-500 text-white p-2 rounded-md"
           value={"Soumettre"}
         />
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}{" "}
       </form>
     </div>
   );
