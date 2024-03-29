@@ -29,7 +29,7 @@ const Edit = (task: any) => {
             },
           }
         );
-        console.log({ res });
+     
 
         const task = await res.json();
         console.log({ task });
@@ -38,6 +38,7 @@ const Edit = (task: any) => {
           description: task.description,
           image: task.image.url,
         });
+        console.log(setData);
       } catch (error) {
         console.log({ error });
       }
@@ -74,23 +75,15 @@ const Edit = (task: any) => {
             "Content-Type": "application/json",
           },  
            body: JSON.stringify(data),
-        }
-     
-      );
-  
+        }     
+      );  
       if (response.ok) {
         // Task update successfully
         router.push("/dashboard");
-      } 
-      // else {
-      //   // Handle error
-       
-      // }
+      }    
     } catch (error) {
-      console.log({error});
-      
-    }
-    
+      console.log({error});     
+    }    
   };
 
   return (

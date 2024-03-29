@@ -41,16 +41,18 @@ const CreateTache = () => {
       },
       body: JSON.stringify(task),
     });
+console.log('Taks creation',response);
 
-    if (response.ok) {
-      // Project created successfully
-      router.push("/dashboard");
-    } else {
-      // Handle error
-    }
+    // if (response.ok) {
+    //   // Project created successfully
+    //   router.push("/dashboard");
+    // } else {
+    //   // Handle error
+    // }
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    handleCreate()
   };
   return (
     <>
@@ -109,7 +111,6 @@ const CreateTache = () => {
           <button
             className="bg-green-600 hover:bg-opacity-80 text-white rounded-lg px-4 py-2 duration-200 w-full"
             type="submit"
-            onClick={handleCreate}
           >
             Create Project
           </button>
