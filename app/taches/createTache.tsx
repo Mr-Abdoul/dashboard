@@ -19,17 +19,11 @@ const CreateTache = () => {
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     // setTask({ ...task, [e.target.name]: e.target.value });
     // console.log(task.img);
   };
 
-  // const readreImage = (file: any) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = () => {
-  //     console.log(reader.result)
-  //   }
-  // }
 
   const handleCreate = async () => {
     // console.log(task);
@@ -41,14 +35,12 @@ const CreateTache = () => {
       },
       body: JSON.stringify(task),
     });
-console.log('Taks creation',response);
-
-    // if (response.ok) {
-    //   // Project created successfully
-    //   router.push("/dashboard");
-    // } else {
-    //   // Handle error
-    // }
+    if (response.ok) {
+      // Project created successfully
+      router.push("/dashboard");
+    } else {
+      // Handle error
+    }
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();

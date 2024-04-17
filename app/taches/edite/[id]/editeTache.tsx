@@ -13,38 +13,38 @@ const Edit = (task: any) => {
   const [data, setData] = useState({
     name: "",
     description: "",
-    image: "",
+    image: ""
   });
 
   // const [upData, setUpData] = useState(null);
 
-  useEffect(() => {
-    const updateData = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_URL_BACKEND}/send/getTache/${id}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-     
+  const updateData = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/api/send/getTache/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-        const task = await res.json();
-        console.log({ task });
-        setData({
-          name: task.name,
-          description: task.description,
-          image: task.image.url,
-        });
-        console.log(setData);
-      } catch (error) {
-        console.log({ error });
-      }
-    };
+      const task = await res.json();
+      // console.log({ task });
+      setData({
+        name: task.name,
+        description: task.description,
+        image: task.image.url,
+      });
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  useEffect(() => {
     updateData();
-  }, []);
+  });
 
   // const onChange = (e:any) => {
   //   setData({ ...task, [e.target.name]: e.target.value });
@@ -73,17 +73,17 @@ const Edit = (task: any) => {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-          },  
-           body: JSON.stringify(data),
-        }     
-      );  
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (response.ok) {
         // Task update successfully
         router.push("/dashboard");
-      }    
+      }
     } catch (error) {
-      console.log({error});     
-    }    
+      console.log({ error });
+    }
   };
 
   return (

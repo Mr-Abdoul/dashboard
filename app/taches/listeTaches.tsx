@@ -11,7 +11,6 @@ const LesTache = () => {
     const fetchTasks = async () => {
       const response = await fetch(`${process.env.NEXT_PUBLIC_URL_BACKEND}/api/send/getTache`);
       const data = await response.json();
-      console.log('Tasks',data);
       
       setTasks(data);
     };

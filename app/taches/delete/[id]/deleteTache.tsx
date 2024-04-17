@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 const Delete = () => {
   const params = useParams()
-  console.log({params});
   
   const router = useRouter();
   const { id } = params;
